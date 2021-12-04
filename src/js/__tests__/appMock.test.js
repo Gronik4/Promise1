@@ -1,10 +1,9 @@
 import savingGame from '../app';
 
-jest.mock('../GameSavingLoader.js');
+jest.mock('../reader.js');
 const Expected = 'Ошибка';
 
-test('Test app on throw', () => {
-  return savingGame().catch((err) => {
-    expect(err.message).toBe(Expected);
-  });
+test('Test app on throw', async () => {
+  const date = await savingGame();
+  expect(date).toBe(Expected);
 });
